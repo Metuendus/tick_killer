@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <base target="_top">
+    <script>
+        function setCreds() {
+            google.script.run.setUserCreds(document.getElementById("credsPrompt"));
+            document.getElementById("form").style.display = "none";
+            document.getElementById("credSet").style.display = "block";
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <div id="form">
+            <span>Introduce las credenciales de Tick y tu correo de EPA</span>
+            <p>Si tienes dudas de donde obtener tus credenciales de la API de Tick, consulta estas instrucciones</p>
+            <form id="credsPrompt">
+                <label for="subscriptionId">Subscription ID</label>
+                <input type="text" id="subscriptionId" name="subscriptionId"><br><br>
+                <label for="apiToken">API Token</label>
+                <input type="text" id="apiToken" name="apiToken"><br><br>
+                <label for="email">Correo de EPA</label>
+                <input type="text" id="email" name="email" placeholder="ejemplo@epa.digital"><br><br>
+                <div>
+                    <label for="freq">Frecuencia de actualización:</label><br>
+                    <input type="radio" id="weekly" name="freq" value="weekly" checked>
+                    <label for="weekly">Semanal*</label><br>
+                    <input type="radio" id="daily" name="freq" value="daily">
+                    <label for="daily">Diario</label><br><br>
+                    <input type="button" value="Establecer Credenciales" onclick="setCreds();">
+            </form>
+            <p>*frecuencia recomendada</p>
+        </div>
+    </div>
+    <div id="credSet" style="display: none;">
+        <p>¡Credenciales establecidas correctamente!</p>
+    </div>
+</body>
+
+</html>
